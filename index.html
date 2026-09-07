@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#567f38" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="canonical" href="https://dennis-lee-phd.github.io/" />
+
+    <!-- Preconnect + non-blocking font load (faster first paint than a CSS @import). -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
+
+    <title>Dennis Lee | Software Engineer</title>
+    <meta
+      name="description"
+      content="Dennis Lee — software engineer (Ph.D., ECE). Published research in optimization, inverse problems, computational imaging, and optics. Distributed systems, machine learning, and full-stack engineering."
+    />
+    <meta name="author" content="Dennis Lee" />
+
+    <!-- Open Graph (LinkedIn, Facebook, Slack link previews) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Dennis Lee" />
+    <meta property="og:title" content="Dennis Lee | Software Engineer" />
+    <meta
+      property="og:description"
+      content="Software engineer (Ph.D., ECE). Published research in optimization, inverse problems, computational imaging, and optics — the algorithmic and ML foundations behind my engineering work."
+    />
+    <meta property="og:url" content="https://dennis-lee-phd.github.io/" />
+    <meta property="og:image" content="https://dennis-lee-phd.github.io/og-image.jpg" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Dennis Lee — Software Engineer, Ph.D. Distributed systems, machine learning, optimization, and computational imaging." />
+
+    <!-- Twitter / X card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Dennis Lee | Software Engineer" />
+    <meta
+      name="twitter:description"
+      content="Software engineer (Ph.D., ECE). Research in optimization, inverse problems, and computational imaging — the algorithmic and ML foundations behind my engineering work."
+    />
+    <meta name="twitter:image" content="https://dennis-lee-phd.github.io/og-image.jpg" />
+
+    <!-- Analytics: GA4 (consent-gated) + Cloudflare Web Analytics (cookieless). -->
+    <script>
+      // Regions where cookie consent is required (EEA + UK + Switzerland).
+      // Single source of truth: reused by Consent Mode below and the geo check.
+      window.CONSENT_REGIONS = ['AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IE','IT','LV','LT','LU','MT','NL','PL','PT','RO','SK','SI','ES','SE','IS','LI','NO','GB','CH'];
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('consent', 'default', {
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
+        analytics_storage: 'granted'
+      });
+      gtag('consent', 'default', {
+        analytics_storage: 'denied',
+        region: window.CONSENT_REGIONS
+      });
+      gtag('js', new Date());
+      // send_page_view:false -> the SPA router sends every page_view (see App.tsx),
+      // avoiding a duplicate hit for the landing route from GA4's auto pageview.
+      gtag('config', 'G-1ZELXH7NSL', { send_page_view: false });
+    </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1ZELXH7NSL"></script>
+
+    <script defer src="https://static.cloudflareinsights.com/beacon.min.js"
+            data-cf-beacon='{"token": "c89b06502a084b5598b8805baf329dbb"}'></script>
+
+    <script>
+      window.klaroConfig = {
+        version: 1,
+        elementID: 'klaro',
+        cookieName: 'dl_consent',
+        cookieExpiresAfterDays: 180,
+        htmlTexts: true,
+        acceptAll: true,
+        hideDeclineAll: false,
+        default: false,
+        mustConsent: false,
+        styling: { theme: ['light', 'bottom', 'wide'] },
+        translations: {
+          en: {
+            consentNotice: {
+              description:
+                'This site uses Google Analytics for aggregate usage stats. No advertising. See the {privacyPolicy}.'
+            },
+            privacyPolicyUrl: '/#/privacy',
+            privacyPolicy: { name: 'privacy policy' },
+            purposes: { analytics: 'Analytics' }
+          }
+        },
+        services: [
+          {
+            name: 'google-analytics',
+            title: 'Google Analytics',
+            purposes: ['analytics'],
+            cookies: [/^_ga/, '_gid', '_gat'],
+            required: false,
+            default: false,
+            callback: function (consent) {
+              if (window.gtag) {
+                gtag('consent', 'update', { analytics_storage: consent ? 'granted' : 'denied' });
+              }
+            }
+          }
+        ]
+      };
+      (function () {
+        var REGULATED = window.CONSENT_REGIONS || [];
+        function loadKlaro() {
+          var css = document.createElement('link');
+          css.rel = 'stylesheet';
+          css.href = 'https://cdn.jsdelivr.net/npm/klaro@0.7/dist/klaro.min.css';
+          document.head.appendChild(css);
+          var s = document.createElement('script');
+          s.defer = true;
+          s.src = 'https://cdn.jsdelivr.net/npm/klaro@0.7/dist/klaro-no-css.js';
+          document.head.appendChild(s);
+        }
+        function decide(country) {
+          // Unknown country -> show the banner (fail safe toward consent).
+          if (!country || REGULATED.indexOf(country) !== -1) loadKlaro();
+        }
+        fetch('https://api.country.is/', { cache: 'no-store' })
+          .then(function (r) { return r.json(); })
+          .then(function (d) { decide(d && d.country); })
+          .catch(function () { decide(null); });
+      })();
+    </script>
+    <script type="module" crossorigin src="/assets/index-D8yi2F2u.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-BNc_vK53.css">
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+  </body>
+</html>

@@ -1,0 +1,6 @@
+# Allow all search engines to crawl everything
+User-agent: *
+Allow: /
+
+# Sitemap (optional - add the file first):
+# Sitemap: https://dennis-lee-phd.github.io/sitemap.xml
